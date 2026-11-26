@@ -56,9 +56,13 @@ folder itself. That build splits the old 76 MB single file into:
 
 - `index.html` — about 2.4 MB (page code + boot art + Brotli decoder)
 - `classes.wasm.br`, `mesh.wasm.br`, `server.wasm.br` — compressed runtime
-- `assets.epk`, `sounds.epk` — game assets and sounds
+- `assets.epk` — game assets
+- `sounds.epk.part1`, `sounds.epk.part2` — sound data, split into two parts because
+  GitHub's web uploader rejects individual files over 25 MB; the loader rejoins them
 
-Tested over HTTP: all files load and the game boots normally. Note that this split build
-requires a web server (GitHub Pages works); it will not run by double-clicking the file
-because browsers block `fetch()` from `file://`. Keep `NeoJs Client 26.3.html` if you want
-the original double-clickable single-file version.
+Tested over HTTP and on GitHub Pages: all files load and the game boots normally. Note that
+this split build requires a web server (GitHub Pages works); it will not run by
+double-clicking the file because browsers block `fetch()` from `file://`. Keep
+`NeoJs Client 26.3.html` if you want the original double-clickable single-file version.
+
+Live site: https://relesermton.github.io/NeoJs-Client-26.3/
